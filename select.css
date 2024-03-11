@@ -1,0 +1,138 @@
+.search-input-wrap{
+  position: relative;
+  min-height: 32px;
+  width: 100%;
+  padding:0 24px 0 2px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid rgb(217,217,217);
+}
+
+.search-input-wrap.disabled{
+  cursor: not-allowed;
+  background: rgba(0,0,0,0.04);
+}
+
+/* 没有使用.slds-input类 */
+.slds-has-error .search-input-wrap{
+  box-shadow: rgb(186, 5, 23) 0px 0px 0px 1px inset;
+}
+
+
+
+.selected-item-tag{
+  position: relative;
+  background: #dadada;
+  padding: 4px 24px 3px 4px;
+  margin: 2px 2px;
+  border-radius: 4px;
+}
+.selected-item-tag.disabled{
+  padding: 4px 3px;
+}
+
+.selected-item-tag .selected-item-tag-icon-del{
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  cursor: pointer;
+}
+
+
+.search-input-wrap .search-input{
+  height: 28px;
+  flex: 1;
+  min-width: 100px;
+  margin-top: 1px;
+  padding-left: 4px;
+  border: none;
+  outline: none;
+
+}
+
+.search-input-wrap .selected-value-label{
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+}
+
+.search-input-wrap .search-input-clear-icon{
+  display: none;
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+  cursor: pointer;
+}
+
+.search-input-wrap:hover .search-input-clear-icon{
+  display: block;
+}
+
+
+.error-message{
+  display: none;
+}
+.slds-has-error .error-message{
+  display: block;
+}
+
+.bottom-pill-list{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.select-item{
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding: 0 12px;
+  background-color: #fff;
+}
+
+.select-item:hover{
+  background-color: #ddd;
+}
+
+.select-item .select-item-option-state .selected-icon{
+  --sds-c-icon-color-foreground-default: #2c82fd;
+  --slds-c-icon-color-foreground: #2c82fd;
+}
+
+.select-item-list-wrap{
+  display: inline-block;
+}
+.selected-item-list{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.select-dropdown{
+  top: 100%;
+}
+.select-dropdown.placement-top{
+  top: unset;
+  bottom: 95%;
+}
+
+.empty-info{
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: .6;
+  color: rgb(116, 116, 116);
+}
+
+.focused{
+  border-color: var(--slds-c-input-color-border-focus, var(--sds-c-input-color-border-focus, var(--slds-g-color-brand-base-60, var(--lwc-colorBorderInputActive, rgb(27, 150, 255)))));
+  box-shadow: var(--slds-c-input-shadow-focus, var(--sds-c-input-shadow-focus, 0 0 3px var(--lwc-brandAccessible, rgb(1, 118, 211))));
+  outline: 0;
+}

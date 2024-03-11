@@ -1,0 +1,84 @@
+<template>
+    <div style="position: relative;" class="slds-form-element">
+        <label class="slds-form-element__label" for="text-input-id-50">
+            <abbr lwc:if={required} class="slds-required" title="required">* </abbr>
+            {label}
+        </label>
+        <div class="slds-form-element__control">
+            <div class="search-input-wrap disabled" lwc:if={disabled}>
+                <template lwc:if={showInlinePills}>
+                    <div class="selected-item-tag disabled" for:each={selectedValue} key={selectedItem.id}
+                        for:item="selectedItem">
+                        {selectedItem.label}
+                    </div>
+                </template>
+                <div lwc:if={showSelectedValueLabel} class="selected-value-label">{getSelectedValueLabel}</div>
+            </div>
+            <div class={getSearchInputWrapClass} onclick={triggerClickHandler} lwc:else>
+                <template lwc:if={showInlinePills}>
+                    <div class="selected-item-tag" for:each={selectedValue} key={selectedItem.id}
+                        for:item="selectedItem">
+                        {selectedItem.label}
+                        <div class="selected-item-tag-icon-del" data-id={selectedItem.id} onclick={tagItemClickHandler}>
+                            <lightning-icon class="selected-icon" size="x-small" icon-name="utility:close">
+                            </lightning-icon>
+                        </div>
+                    </div>
+                </template>
+                <input class="search-input" readonly={isReadonly} type="text" value={inputVal} oninput={onInput}
+                    onfocus={onFocus} onblur={onBlur}>
+                <div lwc:if={showSelectedValueLabel} class="selected-value-label">{getSelectedValueLabel}</div>
+                <div class="search-input-clear-icon" onclick={clearBtnClickHandler} lwc:if={showClearBtn}>
+                    <lightning-icon class="selected-icon" size="x-small" icon-name="utility:clear">
+                    </lightning-icon>
+                </div>
+            </div>
+        </div>
+        <div class="slds-form-element__help error-message" id="error-message-id-51">{errorMessage}</div>
+        <div lwc:if={showBottomPills} class="bottom-pill-list">
+            <template lwc:if={disabled}>
+                <div class="selected-item-tag disabled" for:each={selectedValue} key={selectedItem.id}
+                    for:item="selectedItem">
+                    {selectedItem.label}
+                </div>
+            </template>
+            <template lwc:else>
+                <div class="selected-item-tag" for:each={selectedValue} key={selectedItem.id} for:item="selectedItem">
+                    {selectedItem.label}
+                    <div class="selected-item-tag-icon-del" data-id={selectedItem.id} onclick={tagItemClickHandler}>
+                        <lightning-icon class="selected-icon" size="x-small" icon-name="utility:close">
+                        </lightning-icon>
+                    </div>
+                </div>
+            </template>
+
+        </div>
+        <div lwc:if={selectDropdownVisible} class={getSelectDropdownClass}>
+            <div class="select-item-list slds-listbox slds-listbox_vertica">
+                <div class="select-item" lwc:if={loading}>
+                    <lightning-spinner alternative-text="Loading..." size="small" variant="brand"></lightning-spinner>
+                </div>
+                <template lwc:else>
+                    <template lwc:if={getShowEmptyData}>
+                        <div class="empty-info">
+                            <lightning-icon icon-name="utility:list">
+                            </lightning-icon>
+                            NO DATA
+                        </div>
+                    </template>
+                    <template lwc:if={renderOptions.length}>
+                        <div class="select-item" onclick={optionItemClickHandler} for:each={renderOptions}
+                            for:item="optionItem" key={optionItem.id} data-id={optionItem.id}>
+                            <div class="select-item-option-content">{optionItem.label}</div>
+                            <div lwc:if={optionItem.selected} class="select-item-option-state">
+                                <lightning-icon class="selected-icon" size="x-small" icon-name="utility:check">
+                                </lightning-icon>
+                            </div>
+                        </div>
+                    </template>
+                </template>
+
+            </div>
+        </div>
+    </div>
+</template>

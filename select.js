@@ -20,7 +20,6 @@ const forOfAndIfMatch = (list = [], condition = () => true, ifMatchCallback = ()
   }
 }
 
-// TODO: 文档添加
 export default class Select extends LightningElement {
   //是否允许查找
   @api showSearch
@@ -63,8 +62,6 @@ export default class Select extends LightningElement {
   @api required
   //校验失败的错误信息
   @api errMessage = 'Please input!'
-  //校验方法
-  @api validateFn = () => true
 
 
   //是否为加载中
@@ -98,7 +95,7 @@ export default class Select extends LightningElement {
    * 初始化默认值和下拉列表
    */
   setupDefaultValueAndOptList() {
-    if (this.defaultValue) {
+    if (typeof this.defaultValue === 'string' || (Array.isArray(this.defaultValue) && this.defaultValue.length)) {
       // 有默认值
       const defaultIdArr = typeof this.defaultValue === 'string' ? this.defaultValue.split(',') : this.defaultValue
       if (!this.options.length) {
